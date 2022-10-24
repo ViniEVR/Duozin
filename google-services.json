@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "72880726709",
+    "project_id": "duozindb",
+    "storage_bucket": "duozindb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72880726709:android:33716ee72fa2be96a194fc",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72880726709-7rmf3nd7okovgc6fqbtaopakjv18jv46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBoGuHU2B-Gtg44u33bOZlzYDVKHfjBj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72880726709-7rmf3nd7okovgc6fqbtaopakjv18jv46.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "72880726709-l1dtgm5eu3l8e6vqss76d9sbts040u56.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
