@@ -2,19 +2,19 @@ import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, Touc
 import React from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
-import backgound from '../img/FundoHome.png'
+import backgound from '../img/FundoPrincipal.png'
 import logo from '../img/LogoBege.png'
 import arrow from '../img/arrow.png'
 import { useNavigation } from '@react-navigation/native'
 
 
-const HomeScreen = () => {
+const InitialScreen = () => {
 const navigation = useNavigation();
 const { signinWithGoogle } = useAuth();
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
-
+          <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-30`}>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
@@ -28,17 +28,13 @@ const { signinWithGoogle } = useAuth();
           
           
         
-        </ImageBackground>
+      </ImageBackground>
     </View>
   )
 }
 
 
 const styles = StyleSheet.create({
-  fundo:{
-    backgroundColor: '#292759',
-    resizeMode: 'cover', 
-  },
   button: {
     backgroundColor: '#3C3F8C',
     padding: 10,
@@ -66,4 +62,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default HomeScreen
+export default InitialScreen

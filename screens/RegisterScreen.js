@@ -8,17 +8,18 @@ import arrow from '../img/arrow.png'
 import { useNavigation } from '@react-navigation/native'
 
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 const navigation = useNavigation();
 const { signinWithGoogle } = useAuth();
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
-          <Text style={styles.textLogin}>Login</Text>
+          <Text style={styles.textLogin}>Cadastro</Text>
           <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-10`}>
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} />
+            <TextInput placeholder='Nome' placeholderTextColor='#F2CF8D' style={styles.input} />
+            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}/>
             <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
           </View>
           
@@ -42,14 +43,14 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: -55,
     marginBottom: -35,
-    marginLeft: 300,
+    marginLeft: 310,
   },
   arrowStyle2: {
     width: 50,
     height: 50,
     marginTop: -15,
     marginTop: -55,
-    marginLeft: 5,
+    marginLeft: 0,
     scaleX: -1
   },
   textLogin:{
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     marginTop: 10,
-    marginBottom: 60,
+    marginBottom: 10,
     borderWidth: 1,
     padding: 10,
     borderRadius: 15,
@@ -93,4 +94,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default LoginScreen
+export default RegisterScreen
