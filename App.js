@@ -3,7 +3,7 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 import tw from "twrnc";
 import StackNavigator from './StackNavigator';
 import { NavigationContainer } from '@react-navigation/native';
-import { AuthProvider } from './hooks/useAuth';
+import { AuthProvider } from './hooks/useAut';
 
 
 
