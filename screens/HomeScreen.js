@@ -21,8 +21,11 @@ const { signinWithGoogle } = useAuth();
                 <Text style={styles.textButton}>Login</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.textButton}>Cadastro</Text>
+              <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
+              <Text style={styles.textButton}>Cadastro</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Settings')}>
+            <Text style={styles.textButton}>Configurações</Text>
           </TouchableOpacity>
           </View>
           
