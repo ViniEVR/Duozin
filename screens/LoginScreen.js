@@ -1,5 +1,5 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import React, {useState} from 'react';
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
@@ -10,16 +10,28 @@ import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
 const navigation = useNavigation();
-const { signinWithGoogle } = useAuth();
+
+
+const handleSignUp = () => {
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(userCredentials => {
+      const user = userCredentials.user;
+      console.log('Registered with:', user.email);
+    })
+    .catch(error => alert(error.message))
+}
+
   return (
+
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
           <Text style={styles.textLogin}>Login</Text>
           <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-10`}>
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} />
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
+            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}  />
+            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} />
           </View>
           
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
