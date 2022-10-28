@@ -24,10 +24,6 @@ const { signinWithGoogle } = useAuth();
             <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
             <Text style={styles.textButton}>Cadastro</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button3} onPress={() => navigation.navigate('Chat')}>
-            <Text style={styles.textButton}>Chat</Text>
-          </TouchableOpacity>
           </View>
           
           
@@ -51,13 +47,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 40
   },
-  button3:{
-    backgroundColor: '#3C3F8C',
-    padding: 10,
-    borderRadius: 15,
-    marginBottom: 5
-  },
-
   textButton: {
     color: '#F2CF8D',
     textAlign: 'center',

@@ -25,6 +25,10 @@ const navigation = useNavigation();
             <Text style={styles.textButton}>Cadastro</Text>
           </TouchableOpacity>
           </View>
+
+          <TouchableOpacity style={styles.button3} onPress={() => navigation.navigate('Chat')}>
+            <Text style={styles.textButton}>Chat</Text>
+          </TouchableOpacity>
           
           
         
@@ -50,6 +54,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     marginBottom: 40
+  },
+  button3:{
+    backgroundColor: '#3C3F8C',
+    padding: 10,
+    borderRadius: 15,
+    marginBottom: 5
   },
   textButton: {
     color: '#F2CF8D',
