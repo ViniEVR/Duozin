@@ -1,28 +1,50 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
 import logo from '../img/LogoBege.png'
 import arrow from '../img/arrow.png'
+import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 
 
 const LoginScreen = () => {
 const navigation = useNavigation();
-const { signinWithGoogle } = useAuth();
+
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged(user => {
+    if (user) {
+      navigation.replace("Home")
+    }
+  })
+
+  return unsubscribe
+}, [])
+
+const handleLogin = () => {
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(userCredentials => {
+      const user = userCredentials.user;
+      console.log('Logged in with:', user.email);
+    })
+    .catch(error => alert(error.message))
+}
+
   return (
+
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
           <Text style={styles.textLogin}>Login</Text>
           <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-10`}>
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} />
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
+            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}  />
+            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} />
           </View>
           
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={handleLogin}>
               <Image style={styles.arrowStyle} source={arrow}  />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 

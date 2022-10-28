@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
 const navigation = useNavigation();
-const { signinWithGoogle } = useAuth();
+
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>

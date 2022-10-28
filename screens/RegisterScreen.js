@@ -1,16 +1,33 @@
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
-import React from 'react'
-import useAuth from '../hooks/useAuth'
+import React, {useState} from 'react';
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
 import logo from '../img/LogoBege.png'
 import arrow from '../img/arrow.png'
+import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 
 
 const RegisterScreen = () => {
 const navigation = useNavigation();
-const { signinWithGoogle } = useAuth();
+
+const [name, setName] = useState('')
+const [email, setEmail] = useState('')
+const [password, setPassword] =useState('')
+
+
+const handleSignUp = () => {
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then(userCredentials => {
+      const user = userCredentials.user;
+      console.log('Registered with:', user.email);
+    })
+    .catch(error => alert(error.message))
+}
+
+
+
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
@@ -18,12 +35,15 @@ const { signinWithGoogle } = useAuth();
           <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-10`}>
-            <TextInput placeholder='Nome' placeholderTextColor='#F2CF8D' style={styles.input} />
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}/>
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
+            <TextInput placeholder='Nome' placeholderTextColor='#F2CF8D' style={styles.input} value={name}
+          onChangeText={text => setName(text)}/>
+            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} value={email}
+          onChangeText={text => setEmail(text)}/>
+            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} value={password}
+          onChangeText={text => setPassword(text)} secureTextEntry />
           </View>
           
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={handleSignUp}>
               <Image style={styles.arrowStyle} source={arrow}  />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
@@ -78,7 +98,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     borderWidth: 1,
-    padding: 10,
+    padding: 10,  
     borderRadius: 15,
     backgroundColor: '#3C3F8C',
     color: '#F2CF8D',
