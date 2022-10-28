@@ -15,6 +15,7 @@ const [name, setName] = useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] =useState('')
 
+
 const handleSignUp = () => {
   auth
     .createUserWithEmailAndPassword(email, password)
@@ -24,6 +25,8 @@ const handleSignUp = () => {
     })
     .catch(error => alert(error.message))
 }
+
+
 
   return (
     <View style={tw`flex-1 justify-center`}> 

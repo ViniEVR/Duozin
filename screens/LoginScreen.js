@@ -1,23 +1,33 @@
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
 import logo from '../img/LogoBege.png'
 import arrow from '../img/arrow.png'
+import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 
 
 const LoginScreen = () => {
 const navigation = useNavigation();
 
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged(user => {
+    if (user) {
+      navigation.replace("Home")
+    }
+  })
 
-const handleSignUp = () => {
+  return unsubscribe
+}, [])
+
+const handleLogin = () => {
   auth
-    .createUserWithEmailAndPassword(email, password)
+    .signInWithEmailAndPassword(email, password)
     .then(userCredentials => {
       const user = userCredentials.user;
-      console.log('Registered with:', user.email);
+      console.log('Logged in with:', user.email);
     })
     .catch(error => alert(error.message))
 }
@@ -34,7 +44,7 @@ const handleSignUp = () => {
             <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} />
           </View>
           
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={handleLogin}>
               <Image style={styles.arrowStyle} source={arrow}  />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
