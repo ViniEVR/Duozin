@@ -6,10 +6,20 @@ import backgound from '../img/FundoHome.png'
 import logo from '../img/LogoBege.png'
 import arrow from '../img/arrow.png'
 import { useNavigation } from '@react-navigation/native'
+import { auth } from '../firebase';
 
 
 const HomeScreen = () => {
 const navigation = useNavigation();
+
+  const handleSignOut = () =>{
+    auth
+    .signOut()
+    .then(() => {
+      navigation.replace("Login")
+    })
+    .catch(error => alert(error.message))
+   }
 
   return (
     <View style={tw`flex-1 justify-center`}> 
@@ -21,8 +31,12 @@ const navigation = useNavigation();
                 <Text style={styles.textButton}>Login</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
+          <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
             <Text style={styles.textButton}>Cadastro</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.button2} onPress={handleSignOut}>
+            <Text style={styles.textButton}>Sair</Text>
           </TouchableOpacity>
           </View>
           
