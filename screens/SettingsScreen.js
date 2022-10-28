@@ -1,91 +1,89 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
-import React from 'react'
-import useAuth from '../hooks/useAuth'
-import tw from "twrnc";
-import backgound from '../img/FundoLoginCadastro.png'
-import logo from '../img/LogoBege.png'
-import arrow from '../img/arrow.png'
-import { useNavigation } from '@react-navigation/native'
+import { StyleSheet, Modal, useState, View, Text, TouchableOpacity, Animated, Easing } from 'react-native';
+import React from 'react';
+
 
 
 const ConfigurationScreen = () => {
-const navigation = useNavigation();
-const { signinWithGoogle } = useAuth();
+  const [visible, setVisible] = useState(false);
+  const scale = useRef(new Animated.View(0)).current;
+  const options = [
+    {
+      title: 'Publicar',
+      icon: 'favicon.png',
+      action: () => alert('publicar'),
+    },
+    {
+      title: 'Story',
+      icon: 'favicon.png',
+      action: () => alert('Story'),
+    },
+    {
+      title: 'Video do reels',
+      icon: 'favicon.png',
+      action: () => alert('Video do reels'),
+    },
+    {
+      title: 'Transmissaõa ao vivo',
+      icon: 'favicon.png',
+      action: () => alert('Transmissão'),
+    },
+  ];
+  function resizeBox(to) {
+    to === 1 && setVisible(true);
+    Animated.timing(scale, {
+      toValue: to,
+      useNativeDriver: true,
+      duration: 200,
+      easing: Easing.linear,
+    }).start(() => to === 0 && setVisible(false));
+  }
   return (
-    <View style={tw`flex-1 justify-center`}> 
-      <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
-          <Text style={styles.textLogin}>Configurações</Text>
-           
-
-          <View style={tw`px-10`}>
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} />
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
-          </View>
-          
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <Image style={styles.arrowStyle} source={arrow}  />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
-              <Image style={styles.arrowStyle2} source={arrow}  />
-          </TouchableOpacity>
-
-        
-      </ImageBackground>
+    <View >
+      <TouchableOpacity onPress={() => realizeBox(1)}>
+        <Icon name="favicon" size={26} color={'#2121211'} />
+      </TouchableOpacity>
+      <Modal transparent visible={visible}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'red' }} onTouchStart={() => resizeBox(0)}>
+          <Animeted.View
+            style={[
+              styles.popup,
+              {opacity: scale.interpolate({inputRange:[0,1], outputRange:[0,1]})},
+              {
+                transform: [{ scale }]
+              },
+            ]}
+          >
+            {options.map((op, i) => (
+              <TouchableOpacity style={styles.option} key={i} onPress={() => op.action}>
+                <Text>{op.title}</Text>
+                <Icon name={op.icon} size={26} color={'#212121'} />
+              </TouchableOpacity>
+            ))},
+          </Animeted.View>
+        </SafeAreaView>
+      </Modal>
     </View>
-  )
-}
-
+  );
+};
 
 const styles = StyleSheet.create({
-  arrowStyle: {
-    width: 50,
-    height: 50,
-    marginTop: -55,
-    marginBottom: -35,
-    marginLeft: 300,
-  },
-  arrowStyle2: {
-    width: 50,
-    height: 50,
-    marginTop: -15,
-    marginTop: -55,
-    marginLeft: 5,
-    scaleX: -1
-  },
-  textLogin:{
-      marginBottom: 360,
-      marginLeft: 30,
-      color: '#4649A6',
-      fontSize: 30
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    marginTop: 10,
-    marginBottom: 5,
+  popup: {
+    borderRadius: 8,
+    borderColor: '#333',
     borderWidth: 1,
-    padding: 10,
-    borderRadius: 15,
-    backgroundColor: '#3C3F8C',
-    color: '#F2CF8D',
-    paddingStart: 20,
-    borderColor: '#F2CF8D'
+    backgroundColor: '#fff',
+    paddinHorizontal: 10,
+    position: 'absolute',
+    top: 78,
+    right: 0,
   },
-  input2: {
-    height: 40,
-    margin: 12,
-    marginTop: 10,
-    marginBottom: 60,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 15,
-    backgroundColor: '#3C3F8C',
-    color: '#F2CF8D',
-    paddingStart: 20,
-    borderColor: '#F2CF8D'
+  option: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 7,
+    borderBottomColor: '#ccc',
   },
-})
+});
 
-
-export default ConfigurationScreen
-
+export default ConfigurationScreen;
