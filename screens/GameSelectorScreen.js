@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Button, TextInput, TouchableWithoutFeedback, ImageBackground, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
@@ -14,6 +14,7 @@ import lol from '../img/lol.jpg'
 import rainbowsix from '../img/rainbowsix.jpg'
 import valorant from '../img/valorant.png'
 import { useNavigation } from '@react-navigation/native'
+import { discovery } from 'expo-auth-session/build/providers/Google';
 
 
 const GameSelectorScreen = () => {
@@ -23,19 +24,30 @@ const { signinWithGoogle } = useAuth();
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
 
-        <View>
-        <Image  style={styles.games}  source={fortnite}/>
-        <Image  style={tw`float-right`}  source={overwatch}/>
-        </View>
+      <View style={{}}>
+        <Text style={{color: '#F2CF8D', fontSize: 30, fontWeight: 'bold', textAlign: 'center', marginBottom: 10}}>Escolha seus 3 jogos favoritos:</Text>
+      </View>
+
+      <View style={{marginLeft: 30, marginRight: 30, borderWidth: 5, borderStyle: 'solid', borderColor: '#F2CF8D', height: 350, alignItems: 'center'}}>
+
+
+        <ScrollView style={{}}>
+        <Image style={styles.games} source={fortnite}/>
+        <Image style={styles.games} source={overwatch}/>
+        <Image style={styles.games} source={rainbowsix}/>
+        <Image style={styles.games} source={cs}/>
+        <Image style={styles.games} source={freefire}/>
+        <Image style={styles.games} source={lol}/>
+        <Image style={styles.games} source={valorant}/>
+        <Image style={styles.games} source={mk}/>
+        </ScrollView>
+      </View>
+
           <View style={tw`px-30`}>
             
-            
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.textButton}>TESTE</Text>
-            </TouchableOpacity>
 
             <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.textButton}>Cadastro</Text>
+            <Text style={styles.textButton}>Enviar</Text>
             </TouchableOpacity>
           </View>
           
@@ -62,7 +74,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#3C3F8C',
     padding: 10,
     borderRadius: 15,
-    marginBottom: 40
+    marginBottom: 60,
+    marginTop: 10
   },
   textButton: {
     color: '#F2CF8D',
@@ -77,13 +90,13 @@ const styles = StyleSheet.create({
     marginBottom: 140
   },
   games: {
-    width: 170,
-    height: 95,
+    width: 305,
+    height: 170,
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    paddingBottom: 10,
   },
-  games2: {
-    width: 170,
-    height: 95,
-  }
 })
 
 
