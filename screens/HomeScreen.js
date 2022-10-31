@@ -1,11 +1,12 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import React from 'react'
-import useAuth from '../hooks/useAuth'
+import useAuth from '../hooks/useAuth';
 import tw from "twrnc";
-import backgound from '../img/FundoHome.png'
-import logo from '../img/LogoBege.png'
-import arrow from '../img/arrow.png'
-import { useNavigation } from '@react-navigation/native'
+import backgound from '../img/FundoHome.png';
+import logo from '../img/LogoBege.png';
+import arrow from '../img/arrow.png';
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 
 
 const HomeScreen = () => {
@@ -26,12 +27,10 @@ const navigation = useNavigation();
           </TouchableOpacity>
           </View>
 
-          <TouchableOpacity style={styles.button3} onPress={() => navigation.navigate('Chat')}>
-            <Text style={styles.textButton}>Chat</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Chat")} style={tw`absolute right-5 top-7`} >
+            <Ionicons name="chatbubbles-sharp" size={30} />
           </TouchableOpacity>
           
-          
-        
         </ImageBackground>
     </View>
   )
