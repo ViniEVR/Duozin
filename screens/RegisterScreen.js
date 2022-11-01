@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Button, props, TextInput, ImageBackground, Image, TouchableHighlight, Alert, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react';
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
@@ -11,10 +11,10 @@ import { useNavigation } from '@react-navigation/native'
 const RegisterScreen = () => {
 const navigation = useNavigation();
 
+
 const [name, setName] = useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] =useState('')
-
 
 const handleSignUp = () => {
   auth
@@ -22,6 +22,8 @@ const handleSignUp = () => {
     .then(userCredentials => {
       const user = userCredentials.user;
       console.log('Registered with:', user.email);
+      console.log(name)
+      navigation.navigate('Register2')
     })
     .catch(error => alert(error.message))
 }
@@ -31,8 +33,11 @@ const handleSignUp = () => {
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
-          <Text style={styles.textLogin}>Cadastro</Text>
+          <Text style={styles.textCadastro}>Cadastro</Text>
           <Image  style={styles.logo}  source={logo}/>  
+          <TouchableOpacity onPress={() => navigation.navigate("Register2")}> 
+              <Image style={styles.arrowStyle2} source={arrow}  />
+          </TouchableOpacity>
 
           <View style={tw`px-10`}>
             <TextInput placeholder='Nome' placeholderTextColor='#F2CF8D' style={styles.input} value={name}
@@ -43,8 +48,8 @@ const handleSignUp = () => {
           onChangeText={text => setPassword(text)} secureTextEntry />
           </View>
           
-          <TouchableOpacity onPress={handleSignUp}>
-              <Image style={styles.arrowStyle} source={arrow}  />
+          <TouchableOpacity  onPress={handleSignUp}>
+              <Image style={styles.arrowStyle} source={arrow} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
               <Image style={styles.arrowStyle2} source={arrow}  />
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 0,
     scaleX: -1
   },
-  textLogin:{
+  textCadastro:{
       marginBottom: 10,
       marginLeft: 30,
       color: '#4649A6',
