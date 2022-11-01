@@ -8,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import InitialScreen from "./screens/InitialScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import useAuth from "./hooks/useAuth";
+import ChatRow from "./components/ChatRow";
 
 const Stack = createNativeStackNavigator();
 

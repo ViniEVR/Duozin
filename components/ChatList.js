@@ -1,20 +1,47 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import tw from "twrnc";
+import { collection, onSnapshot, query, where } from "@firebase/firestore";
+import { db } from "../firebase";
+import useAuth from "../hooks/useAuth";
+import ChatRow from "../components/ChatRow";
 
 const ChatList = () => {
-    const [matches, setMatches] = useState([]);
+    //const [matches, setMatches] = useState([]);
+    //const { user } = useAuth();
 
-    useEffect(() => {
-        
-    }, [])
+    //useEffect(
+        //() => 
+        //onSnapshot(
+            //query(
+                //collection(db, "matches"),
+                //where("usersMatched","array-contains", user.uid)
+            //),
+            //(snapshot) =>
+                //setMatches(
+                    //snapshot.docs.map((doc) => ({
+                        //id: doc.id,
+                        //...doc.data(),
+                    //}))
+                //)
+            //),
+        //[user]
+    //);
 
 
-    return (
-        <View>
-            <Text>Chatlist... </Text>
+    //return /*matches.length > 0 ?*/ (
+        //<FlatList
+            //style={tw`h-full`}
+            //data={matches}
+            //keyExtractor={item => item.id}
+            //renderItem={({item}) => <ChatRow matchDetails={item} />}
+        //>)
+      return (
+        <View style={tw`p-5`}>
+            <Text onPress={() => navigation.navigate('Chat')} style={tw`text-center text-lg`}></Text>
         </View>
-    );
+        )
+       
 };
 
 export default ChatList;
