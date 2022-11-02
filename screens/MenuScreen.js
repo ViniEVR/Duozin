@@ -4,6 +4,7 @@ import tw from "twrnc";
 import logo from "../img/LogoBege.png"
 import backgound from '../img/FundoHome.png'
 import menuX from '../img/MenuX.png'
+import { auth } from '../firebase'
 import { useNavigation } from '@react-navigation/native'
 
 const MenuScreen = () => {
@@ -12,7 +13,7 @@ const handleSignOut = () =>{
     auth
     .signOut()
     .then(() => {
-      navigation.replace("Login")
+      navigation.replace("InitialReturn")
     })
     .catch(error => alert(error.message))
    }

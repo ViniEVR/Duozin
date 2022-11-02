@@ -35,9 +35,6 @@ const handleSignUp = () => {
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
           <Text style={styles.textCadastro}>Cadastro</Text>
           <Image  style={styles.logo}  source={logo}/>  
-          <TouchableOpacity onPress={() => navigation.navigate("Register2")}> 
-              <Image style={styles.arrowStyle2} source={arrow}  />
-          </TouchableOpacity>
 
           <View style={tw`px-10`}>
             <TextInput placeholder='Nome' placeholderTextColor='#F2CF8D' style={styles.input} value={name}

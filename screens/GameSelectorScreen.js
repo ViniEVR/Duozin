@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, TouchableWithoutFeedback, ImageBackground, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, ImageBackground, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
@@ -13,9 +13,8 @@ import mk from '../img/mk.jpg'
 import lol from '../img/lol.jpg'
 import rainbowsix from '../img/rainbowsix.jpg'
 import valorant from '../img/valorant.png'
-import imagem from '../img/csChecked.png'
 import { useNavigation } from '@react-navigation/native'
-import { discovery } from 'expo-auth-session/build/providers/Google';
+
 
 
 const GameSelectorScreen = () => {
@@ -81,21 +80,13 @@ const SwitchImage1 = () => {
           <View style={tw`px-30`}>
             
 
-            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.textButton}>Enviar</Text>
+            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Home')}>
+              <Text Text style={styles.textButton}>Enviar</Text>
             </TouchableOpacity>
 
             
 
           </View>
-
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <Image style={styles.arrowStyle} source={arrow}  />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
-              <Image style={styles.arrowStyle2} source={arrow}  />
-          </TouchableOpacity>
-          
           
         
         </ImageBackground>
@@ -105,16 +96,6 @@ const SwitchImage1 = () => {
 
 
 const styles = StyleSheet.create({
-  fundo:{
-    backgroundColor: '#292759',
-    resizeMode: 'cover', 
-  },
-  button: {
-    backgroundColor: '#3C3F8C',
-    padding: 10,
-    borderRadius: 15,
-    marginBottom: 10
-  },
   button2:{
     backgroundColor: '#3C3F8C',
     padding: 10,
@@ -126,13 +107,6 @@ const styles = StyleSheet.create({
     color: '#F2CF8D',
     textAlign: 'center',
     fontSize: 20
-    
-  },
-  logo: {
-    width: 250,
-    height: 250,
-    marginLeft: 60,
-    marginBottom: 140
   },
   games: {
     width: 305,
@@ -142,22 +116,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 10,
   },
-  arrowStyle: {
-    width: 50,
-    height: 50,
-    marginTop: -55,
-    marginBottom: -35,
-    marginLeft: 300,
-  },
-  arrowStyle2: {
-    width: 50,
-    height: 50,
-    marginTop: -15,
-    marginTop: -55,
-    marginLeft: 5,
-    scaleX: -1
-  },
 })
-
 
 export default GameSelectorScreen
