@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoLoginCadastro.png'
 import logo from '../img/LogoBege.png'
@@ -11,6 +10,10 @@ import { useNavigation } from '@react-navigation/native'
 
 const LoginScreen = () => {
 const navigation = useNavigation();
+const [email, setEmail] = useState('')
+const [password, setPassword] =useState('')
+
+
 
 useEffect(() => {
   const unsubscribe = auth.onAuthStateChanged(user => {
@@ -56,7 +59,6 @@ const handleLogin = () => {
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   arrowStyle: {
