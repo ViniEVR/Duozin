@@ -1,10 +1,10 @@
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoHome.png'
-import logo from '../img/LogoBege.png'
-import arrow from '../img/arrow.png'
+import perfil from '../img/ProfilePicture.png'
+import botao from '../img/BotaoDuozin.png'
+import botaoX from '../img/BotaoXDuozin.png'
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../firebase';
 
@@ -27,19 +27,24 @@ const navigation = useNavigation();
 
 
           <View style={tw`px-30`}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.textButton}>Login</Text>
+
+            <View style={styles.fundo}>
+              <Image source={perfil} style={styles.profileImage} />
+            </View>
+
+            <TouchableOpacity style={styles.button2} onPress={handleSignOut}>
+              <Text style={styles.textButton}>Sair</Text>
             </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
-            <Text style={styles.textButton}>Cadastro</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button2} onPress={handleSignOut}>
-            <Text style={styles.textButton}>Sair</Text>
-          </TouchableOpacity>
           </View>
+
+          <TouchableOpacity> 
+              <Image style={styles.arrowStyle} source={botao}  />
+          </TouchableOpacity>
           
+          <TouchableOpacity> 
+              <Image style={styles.arrowStyle2} source={botaoX}  />
+          </TouchableOpacity>
           
         
         </ImageBackground>
@@ -49,9 +54,31 @@ const navigation = useNavigation();
 
 
 const styles = StyleSheet.create({
+  arrowStyle: {
+    width: 80,
+    height: 80,
+    marginTop: -55,
+    marginBottom: 10,
+    marginLeft: 230,
+  },
+  arrowStyle2: {
+    width: 80,
+    height: 80,
+    marginTop: -90,
+    marginLeft: 50,
+    scaleX: -1
+  },
+  profileImage: {
+    width: 300,
+    height: 400,
+    borderRadius: 30
+  },
   fundo:{
-    backgroundColor: '#292759',
-    resizeMode: 'cover', 
+    backgroundColor: '#FFFFFF',
+    width: 300,
+    height: 400,
+    marginLeft: -90,
+    borderRadius: 30
   },
   button: {
     backgroundColor: '#3C3F8C',
