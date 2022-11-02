@@ -43,7 +43,7 @@ const RegisterScreen2 = (props) => {
 
             <TextInput placeholder='Idade' keyboardType='numeric' maxLength={3} placeholderTextColor='#F2CF8D' onChangeText={text => idade = text} style={styles.input}/>
 
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry  />
+            <TextInput placeholder='Bio' placeholderTextColor='#F2CF8D' style={styles.input2} />
         </View>
       </ImageBackground>
           <TouchableOpacity  onPress={() => navigation.navigate("Games")}>
