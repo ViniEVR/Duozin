@@ -1,10 +1,9 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
 import tw from "twrnc";
 import backgound from '../img/FundoPrincipal.png'
 import logo from '../img/LogoBege.png'
-import arrow from '../img/arrow.png'
 import { useNavigation } from '@react-navigation/native'
 
 
