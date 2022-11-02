@@ -33,7 +33,7 @@ const RegisterScreen2 = (props) => {
   return (
     <View style={tw`flex-1 justify-center`}>
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
-        <Text style={styles.textCadastro}>Cadastro</Text>
+      <Text style={styles.textCadastro}>Cadastro</Text>
         <Image  style={styles.logo}  source={logo}/>  
         
         <Text style={styles.textHello}>Digite só mais alguns dados</Text>
@@ -46,10 +46,10 @@ const RegisterScreen2 = (props) => {
             <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry  />
         </View>
       </ImageBackground>
-        <TouchableOpacity   onPress={() => navigation.navigate("Home")}>
+          <TouchableOpacity  onPress={() => navigation.navigate("Home")}>
               <Image style={styles.arrowStyle} source={arrow} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}> 
               <Image style={styles.arrowStyle2} source={arrow}  />
           </TouchableOpacity>
     </View>

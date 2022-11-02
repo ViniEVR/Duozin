@@ -3,7 +3,7 @@ import React from 'react'
 import tw from "twrnc";
 import backgound from '../img/FundoHome.png'
 import logo from '../img/LogoBege.png'
-import perfil from '../img/ProfilePicture.png'
+import perfil from '../img/ProfilePicture2.png'
 import botao from '../img/BotaoDuozin.png'
 import botaoX from '../img/BotaoXDuozin.png'
 import menu from '../img/Menu.png'
@@ -11,7 +11,7 @@ import joystick from '../img/Joystick.png'
 import { useNavigation } from '@react-navigation/native'
 
 
-const HomeScreen = () => {
+const HomeScreen2 = () => {
 const navigation = useNavigation();
 
 return (
@@ -22,30 +22,28 @@ return (
           <View style={tw`px-30`}>
 
             <View style={styles.fundo}>
-              <TouchableOpacity onPress={() => navigation.navigate("Menu")}> 
+              <TouchableOpacity onPress={() => navigation.navigate("Menu2")}> 
                 <Image style={styles.menu} source={menu}  />
               </TouchableOpacity>
               <Image source={logo} style={styles.logo} />
               <Image source={perfil} style={styles.profileImage} />
               <View style={styles.footer}>
-                    <Text style={styles.textFooter}>Stitch - 626</Text>
-                    <Text style={styles.textFooter2}>Procuro alguém para jogar os </Text>
-                    <Text style={styles.textFooter2}>games da minha bio, costumo</Text>
-                    <Text style={styles.textFooter2}>jogar das 19:00 até as 23:30</Text>
+                    <Text style={styles.textFooter}>Shaconeles</Text>
+                    <Text style={styles.textFooter2}>Procuro alguém para tiltar </Text>
+                    <Text style={styles.textFooter2}>mid ruim</Text>
+                    <Text style={styles.textFooter2}>Jogo o dia inteiro</Text>
                     <Image source={joystick} style={styles.joystick} />
                     <Text style={styles.textGame}>-LOL</Text>
-                    <Text style={styles.textGame}>-CS</Text>
-                    <Text style={styles.textGame}>-R6</Text>
               </View>
             </View>           
           </View>
 
-          <TouchableOpacity onPress={() => navigation.navigate("Duozin")}> 
+          <TouchableOpacity onPress={() => navigation.navigate("Home3")}> 
               <Image style={styles.arrowStyle} source={botao}  />
           </TouchableOpacity>
           
-          <TouchableOpacity onPress={() => navigation.navigate("Home2")}> 
-              <Image style={styles.arrowStyle2} source={botaoX} />
+          <TouchableOpacity onPress={() => navigation.navigate("Home3")}> 
+              <Image style={styles.arrowStyle2} source={botaoX}  />
           </TouchableOpacity>
           
         
@@ -145,4 +143,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default HomeScreen
+export default HomeScreen2
