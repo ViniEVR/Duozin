@@ -26,7 +26,7 @@ const { signinWithGoogle } = useAuth();
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Game')}>
-            <Text style={styles.textButton}>Cadastro</Text>
+            <Text style={styles.textButton}>Games</Text>
           </TouchableOpacity>
           </View>
           

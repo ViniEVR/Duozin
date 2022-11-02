@@ -13,6 +13,7 @@ import mk from '../img/mk.jpg'
 import lol from '../img/lol.jpg'
 import rainbowsix from '../img/rainbowsix.jpg'
 import valorant from '../img/valorant.png'
+import imagem from '../img/csChecked.png'
 import { useNavigation } from '@react-navigation/native'
 import { discovery } from 'expo-auth-session/build/providers/Google';
 
@@ -20,6 +21,15 @@ import { discovery } from 'expo-auth-session/build/providers/Google';
 const GameSelectorScreen = () => {
 const navigation = useNavigation();
 const { signinWithGoogle } = useAuth();
+
+let imagenzinha = fortnite
+
+const SwitchImage1 = () => {
+  imagenzinha = valorant
+  console.log("Clicado né")
+
+  
+}
   return (
     <View style={tw`flex-1 justify-center`}> 
       <ImageBackground source={backgound} resizeMode="cover" style={tw`flex-1 justify-end text-center`}>
@@ -32,16 +42,40 @@ const { signinWithGoogle } = useAuth();
 
       {/* Comentário aleatório*/}
 
-        <ScrollView style={{}}>
-        <Image style={styles.games} source={fortnite}/>
-        <Image style={styles.games} source={overwatch}/>
-        <Image style={styles.games} source={rainbowsix}/>
-        <Image style={styles.games} source={cs}/>
-        <Image style={styles.games} source={freefire}/>
-        <Image style={styles.games} source={lol}/>
-        <Image style={styles.games} source={valorant}/>
-        <Image style={styles.games} source={mk}/>
-        </ScrollView>
+      <ScrollView style={{}}>
+        <TouchableOpacity onPress={SwitchImage1}>
+          <Image style={styles.games} source={imagenzinha}/>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Image style={styles.games} source={overwatch}/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image style={styles.games} source={rainbowsix}/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity>
+          <Image style={styles.games} source={cs}/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity>
+          <Image style={styles.games} source={freefire}/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity>
+          <Image style={styles.games} source={lol}/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity>
+          <Image style={styles.games} source={valorant}/>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Image style={styles.games} source={mk}/>
+        </TouchableOpacity>
+        
+        
+      </ScrollView>
       </View>
 
           <View style={tw`px-30`}>
@@ -50,7 +84,17 @@ const { signinWithGoogle } = useAuth();
             <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Register')}>
             <Text style={styles.textButton}>Enviar</Text>
             </TouchableOpacity>
+
+            
+
           </View>
+
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <Image style={styles.arrowStyle} source={arrow}  />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("InitialReturn")}> 
+              <Image style={styles.arrowStyle2} source={arrow}  />
+          </TouchableOpacity>
           
           
         
@@ -97,6 +141,21 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     textAlign: 'center',
     paddingBottom: 10,
+  },
+  arrowStyle: {
+    width: 50,
+    height: 50,
+    marginTop: -55,
+    marginBottom: -35,
+    marginLeft: 300,
+  },
+  arrowStyle2: {
+    width: 50,
+    height: 50,
+    marginTop: -15,
+    marginTop: -55,
+    marginLeft: 5,
+    scaleX: -1
   },
 })
 
