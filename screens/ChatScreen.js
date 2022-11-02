@@ -7,6 +7,7 @@ import tw from "twrnc";
 import { useNavigation } from '@react-navigation/native'
 
 
+
 const ChatScreen = () => {
   const navigation = useNavigation();
   return (
@@ -17,16 +18,14 @@ const ChatScreen = () => {
 
                   <View style={tw`px-5`}>
                     <View > 
-                        <TouchableOpacity style={tw`rounded-full h-16 w-150`} style={styles.cardShadow}>
-                          <Image  style={tw`rounded-full h-16 w-16 mr-3`}
+                        <TouchableOpacity onPress={() => navigation.navigate('Mensagem')} style={tw`rounded-full h-16 w-150`} style={styles.cardShadow}>
+                          <Image  style={tw`rounded-full h-16 w-16 mr-3 m-1`}
                           source={backgound}/>
                         </TouchableOpacity>
+                        <Text style={styles.text}>Guilherme</Text>
                     </View>
                   
-                  </View>
-                  
-                
-                  
+                  </View>   
               </ImageBackground>
     </SafeAreaView>
   );
@@ -58,9 +57,17 @@ const styles = StyleSheet.create({
     marginBottom: 140
   },
   cardShadow: {
-    backgroundColor: 'rgba(255, 0, 255, 0.2)',
+    backgroundColor: 'white',
     opacity: 0.9,
-},
+    width: 2500,
+    marginLeft: -20,   
+  },
+  text: {
+    textAlign: 'center',
+    top: -60,
+    left: -60,
+    fontSize: 22,
+  }
 })
 
 export default ChatScreen;
