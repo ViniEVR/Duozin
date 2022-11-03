@@ -1,10 +1,8 @@
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import React from 'react'
-import useAuth from '../hooks/useAuth';
 import tw from "twrnc";
 import backgound from '../img/FundoHome.png';
-import logo from '../img/LogoBege.png';
-import arrow from '../img/arrow.png';
+import chat from '../img/chat.png';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 
@@ -28,7 +26,7 @@ const navigation = useNavigation();
           </View>
 
           <TouchableOpacity onPress={() => navigation.navigate("Chat")} style={tw`absolute right-5 top-7`} >
-            <Ionicons name="chatbubbles-sharp" size={30} />
+            <Image source={chat} style={styles.chat} />
           </TouchableOpacity>
           
         </ImageBackground>
@@ -38,6 +36,10 @@ const navigation = useNavigation();
 
 
 const styles = StyleSheet.create({
+  chat:{
+    width: 60,
+    height: 60
+  },
   fundo:{
     backgroundColor: '#292759',
     resizeMode: 'cover', 
