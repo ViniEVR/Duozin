@@ -44,7 +44,7 @@ const handleLogin = () => {
 
           <View style={tw`px-10`}>
             <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}  />
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} />
+            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
           </View>
           
           <TouchableOpacity onPress={handleLogin}>
