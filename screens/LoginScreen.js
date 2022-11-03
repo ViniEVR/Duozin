@@ -43,8 +43,10 @@ const handleLogin = () => {
           <Image  style={styles.logo}  source={logo}/>  
 
           <View style={tw`px-10`}>
-            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input}  />
-            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} secureTextEntry />
+            <TextInput placeholder='Email' placeholderTextColor='#F2CF8D' style={styles.input} value={email}
+          onChangeText={text => setEmail(text)}  />
+            <TextInput placeholder='Senha' placeholderTextColor='#F2CF8D' style={styles.input2} value={password}
+          onChangeText={text => setPassword(text)} secureTextEntry />
           </View>
           
           <TouchableOpacity onPress={handleLogin}>
