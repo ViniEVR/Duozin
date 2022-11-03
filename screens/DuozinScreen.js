@@ -27,7 +27,7 @@ return (
                 
               
             </View>       
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Home2")}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Chat")}>
                 <Text style={styles.textButton}>Duozin?</Text>
             </TouchableOpacity>    
           </View>

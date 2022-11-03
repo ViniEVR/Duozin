@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Button, TextInput, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import React from 'react'
 import tw from "twrnc";
 import backgound from '../img/FundoHome.png'
@@ -9,6 +9,7 @@ import botaoX from '../img/BotaoXDuozin.png'
 import menu from '../img/Menu.png'
 import joystick from '../img/Joystick.png'
 import { useNavigation } from '@react-navigation/native'
+import chat from '../img/chat.png';
 
 
 const HomeScreen = () => {
@@ -40,6 +41,10 @@ return (
             </View>           
           </View>
 
+          <TouchableOpacity onPress={() => navigation.navigate("Chat")} style={tw`absolute right-5 top-7`} >
+            <Image source={chat} style={styles.chat} />
+          </TouchableOpacity>
+
           <TouchableOpacity onPress={() => navigation.navigate("Duozin")}> 
               <Image style={styles.arrowStyle} source={botao}  />
           </TouchableOpacity>
@@ -47,8 +52,6 @@ return (
           <TouchableOpacity onPress={() => navigation.navigate("Home2")}> 
               <Image style={styles.arrowStyle2} source={botaoX} />
           </TouchableOpacity>
-          
-        
         </ImageBackground>
     </View>
 )}
@@ -79,6 +82,10 @@ const styles = StyleSheet.create({
     width: 300,
     height: 400,
     borderRadius: 30
+  },
+  chat:{
+    width: 60,
+    height: 60
   },
   fundo:{
     backgroundColor: '#4649A6',
@@ -124,6 +131,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 40
   },
+  button3:{
+    backgroundColor: '#3C3F8C',
+    padding: 10,
+    borderRadius: 15,
+    marginBottom: 5
+  },
   textButton: {
     color: '#F2CF8D',
     textAlign: 'center',
@@ -145,4 +158,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default HomeScreen
+export default HomeScreen;
